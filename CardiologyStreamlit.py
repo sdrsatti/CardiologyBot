@@ -36,6 +36,7 @@ def getanswer(question):
 st.set_page_config(page_title='Cardiology ChatGPT', page_icon=':robot')
 
 st.header('Cardiology ChatGPT')
+st.write('by S. D. Satti, MD FACC FHRS')
 st.write('')
 input_prompt = st.text_area(label='What is your query:', key='user_input')
 
