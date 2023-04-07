@@ -7,15 +7,13 @@ from langchain.vectorstores import Pinecone
 from langchain.embeddings.openai import OpenAIEmbeddings
 import pinecone
 
+import os
 
-OPENAI_API_KEY = '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'
-PINECONE_API_KEY = '518effcc-8f4d-4c7c-981f-b1a63bd90362'
-PINECONE_API_ENV = 'us-east4-gcp'
+OPENAI_API_KEY = os.getenv('OPENAI_API_KEY')
+PINECONE_API_KEY = os.getenv('PINECONE_API_KEY')
+PINECONE_API_ENV = os.getenv('PINECONE_API_ENV')
 
 
-
-
-    
 def getanswer(question):
     # initialize pinecone
     pinecone.init(
