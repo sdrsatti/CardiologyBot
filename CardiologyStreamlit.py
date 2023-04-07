@@ -40,7 +40,7 @@ st.write('by S. D. Satti, MD, FACC, FHRS')
 st.write('')
 input_prompt = st.text_area(label='What is your query:', key='user_input')
 
-if st.button(label='Answer'):
+if st.button(label='Submit'):
     
     answer = getanswer(input_prompt)
     st.write(answer)
