@@ -37,15 +37,16 @@ st.set_page_config(page_title='Cardiology ChatGPT', page_icon=':robot')
 
 st.header('Cardiology ChatGPT')
 st.write('by S. D. Satti, MD, FACC, FHRS')
+st.write('This is an extension of ChatGPT by OpenAI with additional training using cardiology guidelines.')
 st.write('')
+
 input_prompt = st.text_area(label='What is your query:', key='user_input')
 
-if st.button(label='Submit'):
-    
-    answer = getanswer(input_prompt)
-    st.write(answer)
-    
 
+if st.button(label='Submit'):
+    if input_prompt != '':
+        answer = getanswer(input_prompt)
+        st.write(answer)
 
 
 
