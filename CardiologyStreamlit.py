@@ -40,12 +40,14 @@ st.write('by S. D. Satti, MD, FACC, FHRS')
 st.write('This is an extension of ChatGPT by OpenAI with additional training using cardiology guidelines.')
 st.write('')
 
+base_prompt = "Be specific and give the guideline paper used, at the end list the individual references for the following: "
 input_prompt = st.text_area(label='What is your query:', key='user_input')
 
+prompt = base_prompt + input_prompt
 
 if st.button(label='Submit'):
     if input_prompt != '':
-        answer = getanswer(input_prompt)
+        answer = getanswer(prompt)
         st.write(answer)
 
 
