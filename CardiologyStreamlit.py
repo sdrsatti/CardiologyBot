@@ -53,7 +53,7 @@ st.write('by S. D. Satti, MD, FACC, FHRS - me@sattimd.com')
 st.write("This is an extension of OpenAI's ChatGPT with additional training using cardiology guidelines.")
 st.write('')
 
-base_prompt = "Be specific and give the guideline paper used, in a separate paragraph, at the end list the individual references for the following: "
+base_prompt = "Be specific and give the guideline paper used, in a separate paragraph, at the end give an itemized list the individual references for the following: "
 input_prompt = st.text_area(label='What is your query:', key='user_input')
 
 prompt = base_prompt + input_prompt
