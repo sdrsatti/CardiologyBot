@@ -36,7 +36,7 @@ def getanswer(question):
 st.set_page_config(page_title='Cardiology ChatGPT', page_icon=':robot')
 
 st.header('Cardiology ChatGPT')
-st.write('by S. D. Satti, MD, FACC, FHRS')
+st.write('by S. D. Satti, MD, FACC, FHRS - sdrsatti@gmail.com')
 st.write('This is an extension of ChatGPT by OpenAI with additional training using cardiology guidelines.')
 st.write('')
 
