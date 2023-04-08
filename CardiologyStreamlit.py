@@ -36,8 +36,8 @@ def getanswer(question):
 st.set_page_config(page_title='Cardiology ChatGPT', page_icon=':robot')
 
 st.header('Cardiology ChatGPT')
-st.write('by S. D. Satti, MD, FACC, FHRS - sdrsatti@gmail.com')
-st.write('This is an extension of ChatGPT by OpenAI with additional training using cardiology guidelines.')
+st.write('by S. D. Satti, MD, FACC, FHRS - me@sattimd.com')
+st.write("This is an extension of OpenAI's ChatGPT with additional training using cardiology guidelines.")
 st.write('')
 
 base_prompt = "Be specific and give the guideline paper used, at the end list the individual references for the following: "
