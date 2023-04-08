@@ -1,3 +1,16 @@
+''' 
+Access the vectorstore on Pincone for updated embedings from cardiology guidelines
+This program is uploaded to git and then pushed to https://cardiologygpt.streamlit.app
+
+After this program is saved, run from cmd from this directory:
+
+    git commit -a -m "First"
+    git push
+
+This is will update git and then automatically update streamlit.
+
+'''
+
 import streamlit as st 
 
 from langchain.llms import OpenAI
@@ -40,7 +53,7 @@ st.write('by S. D. Satti, MD, FACC, FHRS - me@sattimd.com')
 st.write("This is an extension of OpenAI's ChatGPT with additional training using cardiology guidelines.")
 st.write('')
 
-base_prompt = "Be specific and give the guideline paper used, at the end list the individual references for the following: "
+base_prompt = "Be specific and give the guideline paper used, in a separate paragraph, at the end list the individual references for the following: "
 input_prompt = st.text_area(label='What is your query:', key='user_input')
 
 prompt = base_prompt + input_prompt
