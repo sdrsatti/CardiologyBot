@@ -27,6 +27,24 @@ PINECONE_API_KEY = os.getenv('PINECONE_API_KEY')
 PINECONE_API_ENV = os.getenv('PINECONE_API_ENV')
 
 
+import base64
+
+def add_bg_from_local(image_file):
+    with open(image_file, "rb") as image_file:
+        encoded_string = base64.b64encode(image_file.read())
+    st.markdown(
+    f"""
+    <style>
+    .stApp {{
+        background-image: url(data:image/{"jpg"};base64,{encoded_string.decode()});
+        background-size: cover
+    }}
+    </style>
+    """,
+    unsafe_allow_html=True
+    )
+
+
 def getanswer(question):
     # initialize pinecone
     pinecone.init(
@@ -38,7 +56,7 @@ def getanswer(question):
     
     #docsearch = Pinecone.from_texts([t.page_content for t in texts], embeddings, index_name=index_name)
     docsearch = Pinecone.from_existing_index(index_name, embeddings)
-    llm = OpenAI(temperature=0, openai_api_key=OPENAI_API_KEY)
+    llm = OpenAI(temperature=0, model="text-davinci-003", openai_api_key=OPENAI_API_KEY)
     chain = load_qa_chain(llm, chain_type="stuff")
     query = question
     docs = docsearch.similarity_search(query, include_metadata=True)
@@ -46,16 +64,21 @@ def getanswer(question):
 
     return(answer)
 
+  
+
 st.set_page_config(page_title='Cardiology ChatGPT', page_icon=':robot')
+
+add_bg_from_local('bluegrad.jpg')
 
 st.header('Cardiology ChatGPT')
 st.write('by S. D. Satti, MD, FACC, FHRS - me@sattimd.com')
 st.write("This is an extension of OpenAI's ChatGPT with additional training using cardiology guidelines.")
 st.write('')
 
-base_prompt = "Be specific and give the guideline paper used, in a separate paragraph, at the end give an itemized list the individual references for the following: "
+base_prompt = "Give specific answers. In a separate paragraph, at the end give an itemized list the individual references for the following: "
 input_prompt = st.text_area(label='What is your query:', key='user_input')
 
+input_prompt = 'Question: '+input_prompt+'Lets think step by step. Answer:'
 prompt = base_prompt + input_prompt
 
 if st.button(label='Submit'):
