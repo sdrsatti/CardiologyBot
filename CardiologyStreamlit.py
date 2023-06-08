@@ -38,7 +38,7 @@ def getanswer(question):
     
     #docsearch = Pinecone.from_texts([t.page_content for t in texts], embeddings, index_name=index_name)
     docsearch = Pinecone.from_existing_index(index_name, embeddings)
-    llm = OpenAI(temperature=0, model="text-davinci-003", openai_api_key=OPENAI_API_KEY)
+    llm = OpenAI(temperature=0, model_name="text-davinci-003", openai_api_key=OPENAI_API_KEY)
     chain = load_qa_chain(llm, chain_type="stuff")
     query = question
     docs = docsearch.similarity_search(query, include_metadata=True)
@@ -64,6 +64,7 @@ prompt = base_prompt + input_prompt
 
 if st.button(label='Submit'):
     if input_prompt != '':
+        st.write("Thinking...")
         answer = getanswer(prompt)
         st.write(answer)
 
