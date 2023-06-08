@@ -41,7 +41,7 @@ def getanswer(question):
     llm = OpenAI(temperature=0, model_name="text-davinci-003", openai_api_key=OPENAI_API_KEY)
     chain = load_qa_chain(llm, chain_type="stuff")
     query = question
-    docs = docsearch.similarity_search(query, include_metadata=True)
+    docs = docsearch.similarity_search(query)
     answer = chain.run(input_documents=docs, question=query)
 
     return(answer)
